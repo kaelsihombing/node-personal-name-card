@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const dbConnectionString = {
    development: process.env.DB_CONNECTION,
+   test: process.env.DB_CONNECTION_TEST
 }
 
 mongoose.connect(

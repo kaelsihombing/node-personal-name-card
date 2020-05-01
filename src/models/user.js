@@ -66,7 +66,7 @@ const userSchema = new Schema({
 class User extends mongoose.model('user', userSchema) {
 
    static register(data) {
-      console.log(data);
+      // console.log(data);
       return new Promise((resolve, reject) => {
 
          let encrypted_password = bcrypt.hashSync(data.password, 10)
@@ -77,7 +77,7 @@ class User extends mongoose.model('user', userSchema) {
             encrypted_password: encrypted_password
          })
             .then(async data => {
-               console.log(data);
+               // console.log(data);
                let token = await jwt.sign({ _id: data._id }, process.env.JWT_SIGNATURE_KEY)
                resolve({
                   message: 'Thank You, your account has been created!',
