@@ -121,6 +121,9 @@ class User extends mongoose.model('user', userSchema) {
                   })
                }
             })
+            .catch(error => {
+               reject(error)
+            })
       })
    }
 
