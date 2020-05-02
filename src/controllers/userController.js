@@ -34,3 +34,13 @@ exports.update = async (req, res) => {
       error(res, err, 422)
    }
 }
+
+exports.getMyData = async (req, res) => {
+   try {
+      let result = await User.getMyData(req.user._id)
+      success(res, result.data, 201, result.message)
+   }
+   catch (err) {
+      error(res, err, 422)
+   }
+}

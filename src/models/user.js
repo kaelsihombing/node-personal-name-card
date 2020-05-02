@@ -176,6 +176,31 @@ class User extends mongoose.model('user', userSchema) {
       })
    }
 
+   static getMyData(id) {
+      return new Promise((resolve, reject) => {
+         this.findById(id)
+            .then(data => {
+               resolve({
+                  data: {
+                     id: data.id,
+                     email: data.email,
+                     username: data.username,
+                     fullname: data.fullname,
+                     image: data.image,
+                     job_title: data.job_title,
+                     company_name: data.company_name,
+                     website: data.website,
+                     phone_number: data.phone_number,
+                     address: data.address
+                  }
+               })
+            })
+            .catch(error => {
+               reject(error.message)
+            })
+      })
+   }
+
    // DONT CODE BELLOW HERE
 }
 module.exports = User;
