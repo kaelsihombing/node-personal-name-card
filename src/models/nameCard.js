@@ -62,7 +62,7 @@ class NameCard extends mongoose.model('NameCard', nameCardSchema) {
    static async createNameCard(body, owner, req) {
       let params = {
          userId: owner,
-         email: body.title,
+         email: body.email,
          image: body.importanceLevel,
          fullname: body.fullname,
          job_title: body.job_title,

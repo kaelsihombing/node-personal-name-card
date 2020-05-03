@@ -27,7 +27,7 @@ exports.auth = async (req, res) => {
 
 exports.update = async (req, res) => {
    try {
-      let result = await User.dataUpdate(req.user, req)
+      let result = await User.dataUpdate(req.user._id, req)
       success(res, result.data, 201, result.message)
    }
    catch (err) {

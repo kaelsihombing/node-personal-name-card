@@ -128,6 +128,7 @@ class User extends mongoose.model('user', userSchema) {
    }
 
    static async dataUpdate(user, req) {
+      console.log(req.body);
 
       let params = {
          email: req.body.email,
@@ -136,7 +137,7 @@ class User extends mongoose.model('user', userSchema) {
          company_name: req.body.company_name,
          website: req.body.website,
          phone_number: req.body.phone_number,
-         address: req.body.address
+         address: req.body.address,
       }
 
       for (let prop in params) if (!params[prop]) delete params[prop];
@@ -147,10 +148,10 @@ class User extends mongoose.model('user', userSchema) {
       }
 
       return new Promise((resolve, reject) => {
-         this.findOne({ _id: user._id })
+         this.findOne({ _id: user })
             .then(user => {
 
-               this.findByIdAndUpdate(user._id, params, { new: true })
+               this.findByIdAndUpdate(user, params, { new: true })
                   .then(data => {
                      resolve({
                         data: {
